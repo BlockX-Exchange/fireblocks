@@ -8,8 +8,8 @@ module Fireblocks
         Request.get(path: '/v1/vault/accounts')
       end
 
-      def create_vault_account(name:)
-        Request.post(body: { name: name }, path: '/v1/vault/accounts')
+      def create_vault_account(name:, body:)
+        Request.post(body: body.merge({name: name}), path: '/v1/vault/accounts')
       end
 
       def get_vault_account(id)
@@ -28,7 +28,7 @@ module Fireblocks
       end
 
       def create_vault_account_asset(vault_account_id, asset_id)
-        Request.post(path: "/v1/vault/accounts/#{vault_account_id}/#{asset_id}")
+        Request.post(path: "/v1/vault/accounts/#{vault_account_id}/#{asset_id}", body: {})
       end
 
       def create_deposit_address(vault_account_id, asset_id, description: nil)
