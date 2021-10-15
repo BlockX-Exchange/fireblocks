@@ -24,7 +24,7 @@ module Fireblocks
           amount:,
           asset_id:,
           source_id:,
-          destination_id:,
+          destination_id:'',
           one_time_address:,
           tag: nil
         )
@@ -41,7 +41,7 @@ module Fireblocks
               id: source_id
             },
             destination: {
-              type: 'EXTERNAL_WALLET',
+              type: one_time_address.present? ? 'ONE_TIME_ADDRESS' : 'EXTERNAL_WALLET',
               id: destination_id,
               oneTimeAddress: one_time_address_hash
             }
