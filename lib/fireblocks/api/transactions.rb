@@ -31,7 +31,7 @@ module Fireblocks
           one_time_address_hash = {
             address: one_time_address
           }
-          one_time_address_hash.merge(tag: tag) if tag
+          one_time_address_hash.merge!(tag: tag) if tag
 
           body = {
             amount: amount,
